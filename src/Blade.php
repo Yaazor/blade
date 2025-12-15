@@ -38,7 +38,7 @@ class Blade implements FactoryContract
         $this->container = $container ?: BladeContainer::getInstance();
 
         $this->setupContainer((array) $viewPaths, $cachePath);
-        (new ViewServiceProvider($this->container))->register();
+        $this->container->register(ViewServiceProvider::class);
 
         $this->factory = $this->container->get('view');
         $this->compiler = $this->container->get('blade.compiler');
